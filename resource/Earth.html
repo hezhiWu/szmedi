@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Earth</title>
+<style>
+  html, body, #viewDiv {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+  }
+</style>
+<link rel="stylesheet" href="https://js.arcgis.com/4.8/esri/css/main.css">
+<script src="https://js.arcgis.com/4.8/"></script>
+<script>
+require([
+  "esri/Map",
+  "esri/views/SceneView",
+  "esri/layers/GraphicsLayer",
+  "esri/Graphic",
+  "dojo/domReady!"
+], function(Map, SceneView,GraphicsLayer,Graphic){
+  var map = new Map({
+    basemap: "satellite"
+    // ground: "world-elevation"
+  });
+    /*********************
+    * Add graphics layer
+    *********************/
+
+    var graphicsLayer = new GraphicsLayer();
+    map.add(graphicsLayer);
+    /*************************
+    * Add a 3D point graphic
+    *************************/
+    /////////////////////
+    var point1 = {
+        type: "point", // autocasts as new Point()
+        x: 112.07,
+        y: 24.52,
+        z: 0
+    };
+
+    var markerSymbol1 = {
+        type: "simple-marker", // autocasts as new SimpleMarkerSymbol()
+          color: [226, 119, 40],
+          outline: { // autocasts as new SimpleLineSymbol()
+            color: [255, 255, 255],
+            width: 2
+          }    
+    };
+
+    var pointGraphic1 = new Graphic({
+        geometry: point1,
+        symbol: markerSymbol1
+    });
+    graphicsLayer.add(pointGraphic1);
+    ///////////////////
+    var point2={
+        type: "point", 
+        z: 0
+    };;
+    point2.x=115.27;
+    point2.y=24.53;
+    var markerSymbol2={
+        type: "simple-marker", // autocasts as new SimpleMarkerSymbol()
+          color: [226, 0, 0],
+          outline: { // autocasts as new SimpleLineSymbol()
+            color: [255, 255, 255],
+            width: 2
+          }     
+    };
+    var pointGraphic2= new Graphic({
+        geometry: point2,
+        symbol: markerSymbol2
+    });
+    graphicsLayer.add(pointGraphic2);
+    ////////////
+    var point3={
+        type: "point", 
+        z: 0
+    };;
+    point3.x=117.27;
+    point3.y=26.03;
+    var markerSymbol3={
+        type: "simple-marker", // autocasts as new SimpleMarkerSymbol()
+          color: [0, 119, 0],
+          outline: { // autocasts as new SimpleLineSymbol()
+            color: [255, 255, 255],
+            width: 2
+          }       
+    };
+    var pointGraphic3= new Graphic({
+        geometry: point3,
+        symbol: markerSymbol3
+    });
+    graphicsLayer.add(pointGraphic3);
+    //////////////////
+    var point4={
+        type: "point", 
+        z: 0
+    };;
+    point4.x=110.27;
+    point4.y=28.83;
+    var markerSymbol4={
+        type: "simple-marker", // autocasts as new SimpleMarkerSymbol()
+          color: [0, 0, 40],
+          outline: { // autocasts as new SimpleLineSymbol()
+            color: [255, 255, 255],
+            width: 2
+          }     
+    };
+    var pointGraphic4= new Graphic({
+        geometry: point4,
+        symbol: markerSymbol4
+    });
+    graphicsLayer.add(pointGraphic4);
+    ////////////
+    var view = new SceneView({
+    container: "viewDiv",     // Reference to the scene div created in step 5
+    map: map,                 // Reference to the map object created before the scene
+    scale: 50000000,          // Sets the initial scale to 1:50,000,000
+    center: [114.07,22.62]  // Sets the center point of view with lon/lat
+    });
+});
+</script>
+</head>
+<body>
+  <div id="viewDiv"></div>
+</body>
+</html>
